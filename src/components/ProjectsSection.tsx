@@ -1,4 +1,5 @@
-import { ExternalLink, Github, ArrowRight, Car, Bot, Workflow, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Github, Car, Bot, Workflow, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const projects = [
@@ -9,7 +10,7 @@ const projects = [
     icon: Shield,
     color: "from-primary to-cyan-400",
     year: "2024",
-    link: "https://github.com/modeste-loko", // Remplacer par le vrai lien
+    slug: "barriere-rfid",
   },
   {
     title: "Voiture Télécommandée",
@@ -18,7 +19,7 @@ const projects = [
     icon: Car,
     color: "from-secondary to-purple-400",
     year: "2024",
-    link: "https://github.com/modeste-loko", // Remplacer par le vrai lien
+    slug: "voiture-telecommandee",
   },
   {
     title: "Voiture IA Autonome",
@@ -27,7 +28,7 @@ const projects = [
     icon: Bot,
     color: "from-accent to-orange-400",
     year: "2025",
-    link: "https://github.com/modeste-loko", // Remplacer par le vrai lien
+    slug: "voiture-ia",
   },
   {
     title: "Automatisation Workflows",
@@ -36,7 +37,7 @@ const projects = [
     icon: Workflow,
     color: "from-emerald-500 to-teal-400",
     year: "2025",
-    link: "https://github.com/modeste-loko", // Remplacer par le vrai lien
+    slug: "automatisation-workflows",
   },
 ];
 
@@ -64,12 +65,10 @@ const ProjectsSection = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, idx) => (
-            <a
+          {projects.map((project) => (
+            <Link
               key={project.title}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              to={`/projet/${project.slug}`}
               className="group project-card block"
             >
               {/* Gradient Header */}
@@ -109,12 +108,12 @@ const ProjectsSection = () => {
                 {/* Action */}
                 <div className="flex items-center gap-4 pt-4 border-t border-border">
                   <span className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-primary transition-colors">
-                    <span>Voir le projet</span>
-                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>Voir les détails</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 
