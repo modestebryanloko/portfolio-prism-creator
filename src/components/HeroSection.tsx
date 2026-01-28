@@ -29,7 +29,7 @@ const HeroSection = () => {
             </h1>
             
             <p className="opacity-0 animate-fade-up stagger-2 text-lg md:text-xl text-muted-foreground mb-4 code-font">
-              <span className="text-primary">{">"}</span> Ingénieur en Génie Électrique & Informatique
+              <span className="text-primary">{">"}</span> Étudiant en Génie Électrique & Informatique
             </p>
             
             <p className="opacity-0 animate-fade-up stagger-3 text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-8">

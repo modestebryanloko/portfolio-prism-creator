@@ -37,7 +37,7 @@ const experiences = [
     type: "education",
     title: "Baccalauréat F3 - Électrotechnique",
     organization: "École Saint Jean Bosco, Cotonou",
-    period: "2022",
+    period: "2023",
     description: "Formation technique en électrotechnique avec une forte composante pratique sur les installations électriques.",
     icon: GraduationCap,
   },
