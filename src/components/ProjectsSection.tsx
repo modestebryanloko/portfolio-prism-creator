@@ -9,6 +9,7 @@ const projects = [
     icon: Shield,
     color: "from-primary to-cyan-400",
     year: "2024",
+    link: "https://github.com/modeste-loko", // Remplacer par le vrai lien
   },
   {
     title: "Voiture Télécommandée",
@@ -17,6 +18,7 @@ const projects = [
     icon: Car,
     color: "from-secondary to-purple-400",
     year: "2024",
+    link: "https://github.com/modeste-loko", // Remplacer par le vrai lien
   },
   {
     title: "Voiture IA Autonome",
@@ -25,6 +27,7 @@ const projects = [
     icon: Bot,
     color: "from-accent to-orange-400",
     year: "2025",
+    link: "https://github.com/modeste-loko", // Remplacer par le vrai lien
   },
   {
     title: "Automatisation Workflows",
@@ -33,6 +36,7 @@ const projects = [
     icon: Workflow,
     color: "from-emerald-500 to-teal-400",
     year: "2025",
+    link: "https://github.com/modeste-loko", // Remplacer par le vrai lien
   },
 ];
 
@@ -61,9 +65,12 @@ const ProjectsSection = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, idx) => (
-            <div
+            <a
               key={project.title}
-              className="group project-card"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group project-card block"
             >
               {/* Gradient Header */}
               <div className={`h-2 bg-gradient-to-r ${project.color}`} />
@@ -101,13 +108,13 @@ const ProjectsSection = () => {
 
                 {/* Action */}
                 <div className="flex items-center gap-4 pt-4 border-t border-border">
-                  <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                    <span>Voir détails</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  <span className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                    <span>Voir le projet</span>
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
