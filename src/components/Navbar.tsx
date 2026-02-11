@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "#accueil", label: "Accueil" },
@@ -47,18 +46,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button 
-              asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6"
-            >
-              <a href="/CV_Modeste_Loko.pdf" download>
-                <Download className="w-4 h-4 mr-2" />
-                CV
-              </a>
-            </Button>
-          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -84,15 +71,6 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button 
-              asChild
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full mt-4"
-            >
-              <a href="/CV_Modeste_Loko.pdf" download>
-                <Download className="w-4 h-4 mr-2" />
-                Télécharger CV
-              </a>
-            </Button>
           </div>
         </div>
       )}

@@ -41,7 +41,7 @@ const AboutSection = () => {
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl mx-auto">
           {/* Bio Text */}
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -80,22 +80,6 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Highlights Cards */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {highlights.map((item, index) => (
-              <div
-                key={item.title}
-                className="group p-6 glass-card rounded-2xl hover:border-primary/30 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-12 h-12 mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <item.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

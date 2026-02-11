@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Github, Car, Bot, Workflow, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Car, Workflow, Shield } from "lucide-react";
 
 const projects = [
   {
@@ -20,15 +19,6 @@ const projects = [
     color: "from-secondary to-purple-400",
     year: "2024",
     slug: "voiture-telecommandee",
-  },
-  {
-    title: "Voiture IA Autonome",
-    description: "Création d'un véhicule autonome utilisant l'intelligence artificielle pour la détection d'obstacles et la navigation.",
-    tags: ["Python", "OpenCV", "Machine Learning", "Raspberry Pi"],
-    icon: Bot,
-    color: "from-accent to-orange-400",
-    year: "2025",
-    slug: "voiture-ia",
   },
   {
     title: "Automatisation Workflows",
@@ -117,16 +107,6 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            className="rounded-full px-8 border-border hover:border-primary hover:bg-primary/10"
-          >
-            <Github className="w-4 h-4 mr-2" />
-            Voir plus sur GitHub
-          </Button>
-        </div>
       </div>
     </section>
   );

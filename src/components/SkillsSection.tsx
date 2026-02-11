@@ -6,19 +6,17 @@ const skillCategories = [
     title: "Développement Web",
     icon: Globe,
     skills: [
-      { name: "React.js", level: 75 },
-      { name: "HTML/CSS", level: 85 },
-      { name: "JavaScript", level: 80 },
-      { name: "Node.js", level: 65 },
+      { name: "React.js", level: 30 },
+      { name: "JavaScript", level: 50 },
+      { name: "Node.js", level: 20 },
     ],
   },
   {
     title: "Programmation",
     icon: Code,
     skills: [
-      { name: "Python", level: 80 },
-      { name: "C/C++", level: 70 },
-      { name: "Flutter/Dart", level: 60 },
+      { name: "Python", level: 50 },
+      { name: "C++", level: 70 },
       { name: "SQL", level: 65 },
     ],
   },
@@ -46,19 +44,18 @@ const skillCategories = [
     title: "IA & Data",
     icon: Brain,
     skills: [
-      { name: "Machine Learning", level: 55 },
-      { name: "Computer Vision", level: 50 },
-      { name: "Data Analysis", level: 60 },
-      { name: "Cybersécurité", level: 50 },
+      { name: "Machine Learning", level: 25 },
+      { name: "Computer Vision", level: 10 },
+      { name: "Cybersécurité", level: 10 },
     ],
   },
   {
     title: "Électrotechnique",
     icon: Database,
     skills: [
-      { name: "Réseaux Électriques", level: 80 },
+      { name: "Réseaux Électriques", level: 30 },
       { name: "Asservissement", level: 75 },
-      { name: "Maintenance", level: 70 },
+      { name: "Maintenance Climatiseur", level: 20 },
       { name: "Schémas Électriques", level: 85 },
     ],
   },
@@ -158,20 +155,6 @@ const SkillsSection = () => {
           ))}
         </div>
 
-        {/* Additional Skills Tags */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground mb-4">Autres technologies :</p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {["Git", "GitHub", "VS Code", "Linux", "Figma", "Notion", "Trello", "Firebase"].map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 text-sm bg-muted/50 rounded-full border border-border hover:border-primary/30 hover:bg-muted transition-all duration-300"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
