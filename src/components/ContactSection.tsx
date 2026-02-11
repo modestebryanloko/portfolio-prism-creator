@@ -76,65 +76,9 @@ const ContactSection = () => {
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mt-4" />
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Info Cards */}
-            <div className="space-y-4">
-              {contactInfo.map((item) => (
-                <div key={item.label} className="group">
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      className="flex items-center gap-4 p-4 glass-card rounded-xl hover:border-primary/30 transition-all duration-300"
-                    >
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <item.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">{item.label}</p>
-                        <p className="font-medium group-hover:text-primary transition-colors">
-                          {item.value}
-                        </p>
-                      </div>
-                    </a>
-                  ) : (
-                    <div className="flex items-center gap-4 p-4 glass-card rounded-xl">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <item.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">{item.label}</p>
-                        <p className="font-medium">{item.value}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <p className="text-sm text-muted-foreground mb-4">Retrouvez-moi sur :</p>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-xl bg-muted/50 hover:bg-primary/10 flex items-center justify-center hover:text-primary transition-all duration-300 border border-transparent hover:border-primary/30"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
+        <div className="max-w-2xl mx-auto">
           {/* Contact Form */}
-          <div className="lg:col-span-3">
+          <div>
             <form onSubmit={handleSubmit} className="p-8 glass-card rounded-2xl space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
