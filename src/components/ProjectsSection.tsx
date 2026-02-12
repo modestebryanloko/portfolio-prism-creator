@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Car, Workflow, Shield } from "lucide-react";
+import { ArrowRight, Car, Workflow, Shield, Zap } from "lucide-react";
 
 const projects = [
   {
@@ -28,6 +28,15 @@ const projects = [
     color: "from-emerald-500 to-teal-400",
     year: "2025",
     slug: "automatisation-workflows",
+  },
+  {
+    title: "Réalisation électronique",
+    description: "Conception et réalisation de circuits électroniques, PCB et systèmes embarqués pour diverses applications IoT et automatisation.",
+    tags: ["Arduino", "PCB", "C++", "Électronique"],
+    icon: Zap,
+    color: "from-yellow-500 to-orange-400",
+    year: "2025",
+    slug: "realisation-electronique",
   },
 ];
 
