@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Github, Calendar, Code, Car, Bot, Workflow, Shield, Play } from "lucide-react";
+import { ArrowLeft, Github, Calendar, Code, Car, Bot, Workflow, Shield, Play, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const projectsData = {
@@ -113,6 +113,34 @@ Cette approche no-code/low-code permet de gagner un temps précieux et de rédui
       { name: "REST APIs", description: "Communication entre services" },
       { name: "Webhooks", description: "Déclencheurs en temps réel" },
       { name: "JSON", description: "Format d'échange de données" }
+    ]
+  },
+  "realisation-electronique": {
+    title: "Réalisation électronique",
+    description: "Conception et réalisation de circuits électroniques, PCB et systèmes embarqués pour diverses applications IoT et automatisation.",
+    longDescription: `Projet complet de conception et réalisation de circuits électroniques, depuis la conception des schémas jusqu'à la fabrication de PCB et l'intégration de composants.
+
+Ce projet démontre la maîtrise des techniques de conception électronique, du choix des composants, du layout PCB et de la programmation des microcontrôleurs.
+
+Chaque réalisation est testée et validée pour assurer la qualité et la fiabilité des systèmes embarqués développés.`,
+    tags: ["Arduino", "PCB", "C++", "Électronique"],
+    icon: Zap,
+    color: "from-yellow-500 to-orange-400",
+    year: "2025",
+    githubLink: "https://github.com/modeste-loko",
+    videoUrl: "", // Ajouter l'URL de la vidéo ici
+    features: [
+      "Conception de schémas électroniques",
+      "Design de PCB multicouches",
+      "Soudure et assemblage de composants",
+      "Tests et validation des circuits",
+      "Programmation des microcontrôleurs"
+    ],
+    technologies: [
+      { name: "Arduino", description: "Plateforme de prototypage" },
+      { name: "KiCad", description: "Conception de PCB" },
+      { name: "C++", description: "Programmation des systèmes" },
+      { name: "Composants électroniques", description: "Résistances, condensateurs, capteurs" }
     ]
   }
 };
