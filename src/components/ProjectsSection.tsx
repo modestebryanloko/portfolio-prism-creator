@@ -30,12 +30,12 @@ const projects = [
     slug: "automatisation-workflows",
   },
   {
-    title: "Réalisation électronique",
+    title: "Réalisation simple",
     description: "Conception et réalisation de circuits électroniques, PCB et systèmes embarqués pour diverses applications IoT et automatisation.",
     tags: ["Arduino", "PCB", "C++", "Électronique"],
     icon: Zap,
     color: "from-yellow-500 to-orange-400",
-    year: "2025",
+    year: "2023 - 2026",
     slug: "realisation-electronique",
   },
 ];

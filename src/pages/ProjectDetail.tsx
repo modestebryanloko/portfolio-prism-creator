@@ -116,7 +116,7 @@ Cette approche no-code/low-code permet de gagner un temps précieux et de rédui
     ]
   },
   "realisation-electronique": {
-    title: "Réalisation électronique",
+    title: "Réalisation simple",
     description: "Conception et réalisation de circuits électroniques, PCB et systèmes embarqués pour diverses applications IoT et automatisation.",
     longDescription: `Projet complet de conception et réalisation de circuits électroniques, depuis la conception des schémas jusqu'à la fabrication de PCB et l'intégration de composants.
 
@@ -126,7 +126,7 @@ Chaque réalisation est testée et validée pour assurer la qualité et la fiabi
     tags: ["Arduino", "PCB", "C++", "Électronique"],
     icon: Zap,
     color: "from-yellow-500 to-orange-400",
-    year: "2025",
+    year: "2023 - 2026",
     githubLink: "https://github.com/modeste-loko",
     videoUrl: "", // Ajouter l'URL de la vidéo ici
     features: [
