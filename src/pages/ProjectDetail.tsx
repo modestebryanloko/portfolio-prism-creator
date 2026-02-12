@@ -2,7 +2,22 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Github, Calendar, Code, Car, Bot, Workflow, Shield, Play, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const projectsData = {
+interface ProjectData {
+  title: string;
+  description: string;
+  longDescription: string;
+  tags: string[];
+  icon: any;
+  color: string;
+  year: string;
+  githubLink: string;
+  videoUrls: string[];
+  imageUrls: string[];
+  features: string[];
+  technologies: { name: string; description: string }[];
+}
+
+const projectsData: Record<string, ProjectData> = {
   "barriere-rfid": {
     title: "Barrière Automatique RFID",
     description: "Conception d'un système de contrôle d'accès automatisé utilisant la technologie RFID pour une gestion sécurisée des entrées/sorties.",
@@ -16,7 +31,8 @@ Lorsqu'un badge valide est détecté, la barrière s'ouvre automatiquement et se
     color: "from-primary to-cyan-400",
     year: "2024",
     githubLink: "https://github.com/modeste-loko",
-    videoUrl: "", // Ajouter l'URL de la vidéo ici
+    videoUrls: [],
+    imageUrls: [],
     features: [
       "Lecture de badges RFID avec module RC522",
       "Contrôle de servo-moteur pour la barrière",
@@ -44,7 +60,8 @@ L'application mobile offre une interface intuitive avec des commandes tactiles e
     color: "from-secondary to-purple-400",
     year: "2024",
     githubLink: "https://github.com/modeste-loko",
-    videoUrl: "", // Ajouter l'URL de la vidéo ici
+    videoUrls: ["/videos/voiture-telecommandee-demo.mp4"],
+    imageUrls: [],
     features: [
       "Contrôle directionnel complet (4 directions)",
       "Réglage de la vitesse en temps réel",
@@ -72,7 +89,8 @@ Un modèle de machine learning entraîné permet à la voiture d'apprendre et d'
     color: "from-accent to-orange-400",
     year: "2025",
     githubLink: "https://github.com/modeste-loko",
-    videoUrl: "", // Ajouter l'URL de la vidéo ici
+    videoUrls: [],
+    imageUrls: [],
     features: [
       "Détection d'obstacles en temps réel",
       "Suivi de ligne automatique",
@@ -100,7 +118,8 @@ Cette approche no-code/low-code permet de gagner un temps précieux et de rédui
     color: "from-emerald-500 to-teal-400",
     year: "2025",
     githubLink: "https://github.com/modeste-loko",
-    videoUrl: "", // Ajouter l'URL de la vidéo ici
+    videoUrls: [],
+    imageUrls: [],
     features: [
       "Intégration multi-services (Slack, Gmail, etc.)",
       "Synchronisation automatique de données",
@@ -128,7 +147,8 @@ Chaque réalisation est testée et validée pour assurer la qualité et la fiabi
     color: "from-yellow-500 to-orange-400",
     year: "2023 - 2026",
     githubLink: "https://github.com/modeste-loko",
-    videoUrl: "", // Ajouter l'URL de la vidéo ici
+    videoUrls: ["/videos/realisation-simple-demo1.mp4", "/videos/realisation-simple-demo2.mp4"],
+    imageUrls: ["/images/realisation-simple-schema.jpeg", "/images/realisation-simple-code.jpeg"],
     features: [
       "Conception de schémas électroniques",
       "Design de PCB multicouches",
@@ -228,24 +248,58 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        {/* Video Demo Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <Play className="w-6 h-6 text-primary" />
-            Démonstration vidéo
-          </h2>
-          <div className={`relative rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${project.color} p-0.5`}>
-            <div className="bg-card rounded-xl overflow-hidden">
-              {project.videoUrl ? (
-                <video 
-                  className="w-full aspect-video"
-                  controls
-                  poster=""
-                >
-                  <source src={project.videoUrl} type="video/mp4" />
-                  Votre navigateur ne supporte pas la lecture de vidéos.
-                </video>
-              ) : (
+        {/* Media Section */}
+        {(project.videoUrls.length > 0 || project.imageUrls.length > 0) ? (
+          <>
+            {/* Videos */}
+            {project.videoUrls.length > 0 && (
+              <section className="mb-16">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <Play className="w-6 h-6 text-primary" />
+                  {project.videoUrls.length > 1 ? "Démonstrations vidéo" : "Démonstration vidéo"}
+                </h2>
+                <div className="grid gap-4">
+                  {project.videoUrls.map((url, idx) => (
+                    <div key={idx} className={`relative rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${project.color} p-0.5`}>
+                      <div className="bg-card rounded-xl overflow-hidden">
+                        <video className="w-full aspect-video" controls>
+                          <source src={url} type="video/mp4" />
+                          Votre navigateur ne supporte pas la lecture de vidéos.
+                        </video>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Images */}
+            {project.imageUrls.length > 0 && (
+              <section className="mb-16">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <Code className="w-6 h-6 text-primary" />
+                  Photos du projet
+                </h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {project.imageUrls.map((url, idx) => (
+                    <div key={idx} className={`relative rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${project.color} p-0.5`}>
+                      <div className="bg-card rounded-xl overflow-hidden">
+                        <img src={url} alt={`${project.title} - photo ${idx + 1}`} className="w-full object-cover" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </>
+        ) : (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <Play className="w-6 h-6 text-primary" />
+              Démonstration vidéo
+            </h2>
+            <div className={`relative rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${project.color} p-0.5`}>
+              <div className="bg-card rounded-xl overflow-hidden">
                 <div className="w-full aspect-video flex flex-col items-center justify-center bg-muted/30">
                   <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${project.color} flex items-center justify-center mb-4`}>
                     <Play className="w-8 h-8 text-white ml-1" />
@@ -254,10 +308,10 @@ const ProjectDetail = () => {
                     Vidéo de démonstration à venir
                   </p>
                 </div>
-              )}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Features */}
         <section className="mb-16">
