@@ -3,29 +3,10 @@ import { Code, Cpu, Database, Globe, Wrench, Brain } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Développement Web",
-    icon: Globe,
-    color: "from-primary to-cyan-400",
-    skills: [
-      { name: "React.js", level: 30 },
-      { name: "JavaScript", level: 50 },
-      { name: "Node.js", level: 20 },
-    ],
-  },
-  {
-    title: "Programmation",
-    icon: Code,
-    color: "from-secondary to-purple-400",
-    skills: [
-      { name: "Python", level: 50 },
-      { name: "C++", level: 70 },
-      { name: "SQL", level: 65 },
-    ],
-  },
-  {
     title: "Systèmes Embarqués",
     icon: Cpu,
     color: "from-emerald-500 to-teal-400",
+    dotColor: "bg-emerald-500",
     skills: [
       { name: "Arduino", level: 85 },
       { name: "Raspberry Pi", level: 75 },
@@ -37,6 +18,7 @@ const skillCategories = [
     title: "Automatisation",
     icon: Wrench,
     color: "from-yellow-500 to-orange-400",
+    dotColor: "bg-yellow-500",
     skills: [
       { name: "n8n", level: 80 },
       { name: "API Integration", level: 75 },
@@ -45,24 +27,48 @@ const skillCategories = [
     ],
   },
   {
-    title: "IA & Data",
-    icon: Brain,
-    color: "from-rose-500 to-pink-400",
+    title: "Programmation",
+    icon: Code,
+    color: "from-secondary to-purple-400",
+    dotColor: "bg-secondary",
     skills: [
-      { name: "Machine Learning", level: 25 },
-      { name: "Computer Vision", level: 10 },
-      { name: "Cybersécurité", level: 10 },
+      { name: "Python", level: 50 },
+      { name: "C++", level: 70 },
+      { name: "SQL", level: 65 },
     ],
   },
   {
     title: "Électrotechnique",
     icon: Database,
     color: "from-indigo-500 to-blue-400",
+    dotColor: "bg-indigo-500",
     skills: [
       { name: "Réseaux Électriques", level: 30 },
       { name: "Asservissement", level: 75 },
       { name: "Maintenance Climatiseur", level: 20 },
       { name: "Schémas Électriques", level: 85 },
+    ],
+  },
+  {
+    title: "Développement Web",
+    icon: Globe,
+    color: "from-primary to-cyan-400",
+    dotColor: "bg-primary",
+    skills: [
+      { name: "React.js", level: 30 },
+      { name: "JavaScript", level: 50 },
+      { name: "Node.js", level: 20 },
+    ],
+  },
+  {
+    title: "IA & Data",
+    icon: Brain,
+    color: "from-rose-500 to-pink-400",
+    dotColor: "bg-rose-500",
+    skills: [
+      { name: "Machine Learning", level: 25 },
+      { name: "Computer Vision", level: 10 },
+      { name: "Cybersécurité", level: 10 },
     ],
   },
 ];
@@ -72,48 +78,6 @@ const getLevelLabel = (level: number) => {
   if (level >= 60) return "Avancé";
   if (level >= 40) return "Intermédiaire";
   return "Débutant";
-};
-
-const getLevelDots = (level: number) => {
-  if (level >= 80) return 5;
-  if (level >= 60) return 4;
-  if (level >= 40) return 3;
-  if (level >= 20) return 2;
-  return 1;
-};
-
-const SkillItem = ({ name, level, isVisible, delay }: { name: string; level: number; isVisible: boolean; delay: number }) => {
-  const dots = getLevelDots(level);
-  const label = getLevelLabel(level);
-
-  return (
-    <div
-      className="flex items-center justify-between py-2.5 transition-all duration-500"
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateX(0)" : "translateX(-12px)",
-        transitionDelay: `${delay}ms`,
-      }}
-    >
-      <span className="text-sm font-medium text-foreground">{name}</span>
-      <div className="flex items-center gap-2">
-        <span className="text-xs text-muted-foreground hidden sm:inline">{label}</span>
-        <div className="flex gap-1">
-          {[1, 2, 3, 4, 5].map((dot) => (
-            <div
-              key={dot}
-              className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                dot <= dots
-                  ? "bg-primary scale-100"
-                  : "bg-muted-foreground/20 scale-90"
-              }`}
-              style={{ transitionDelay: `${delay + dot * 80}ms` }}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 };
 
 const SkillsSection = () => {
@@ -128,7 +92,7 @@ const SkillsSection = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -158,48 +122,96 @@ const SkillsSection = () => {
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mt-4" />
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Timeline */}
+        <div className="relative max-w-3xl mx-auto">
+          {/* Vertical line */}
+          <div
+            className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-px transition-all duration-1000"
+            style={{
+              height: isVisible ? "100%" : "0%",
+              transitionDelay: "200ms",
+            }}
+          />
+
           {skillCategories.map((category, idx) => {
             const IconComp = category.icon;
+            const isLeft = idx % 2 === 0;
+
             return (
               <div
                 key={category.title}
-                className="relative group rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-500 overflow-hidden"
+                className={`relative flex items-start mb-12 last:mb-0 ${
+                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
                 style={{
                   opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(24px)",
-                  transitionDelay: `${idx * 100}ms`,
-                  transitionProperty: "opacity, transform, border-color",
+                  transform: isVisible ? "translateY(0)" : "translateY(30px)",
+                  transition: "opacity 0.6s ease, transform 0.6s ease",
+                  transitionDelay: `${idx * 150 + 300}ms`,
                 }}
               >
-                {/* Gradient top bar */}
-                <div className={`h-1 bg-gradient-to-r ${category.color}`} />
-
-                {/* Floating icon */}
-                <div className="absolute -top-0 right-4 translate-y-[-50%]">
+                {/* Node on the line */}
+                <div className="absolute left-6 md:left-1/2 -translate-x-1/2 z-10">
                   <div
-                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-12 h-12 rounded-full bg-gradient-to-br ${category.color} flex items-center justify-center shadow-lg ring-4 ring-background transition-transform duration-300 hover:scale-110`}
                   >
                     <IconComp className="w-5 h-5 text-white" />
                   </div>
                 </div>
 
-                <div className="p-6 pt-5">
-                  <h3 className="font-semibold text-lg mb-4 text-foreground">
-                    {category.title}
-                  </h3>
+                {/* Content card */}
+                <div
+                  className={`ml-16 md:ml-0 md:w-[calc(50%-2.5rem)] ${
+                    isLeft ? "md:mr-auto md:pr-4" : "md:ml-auto md:pl-4"
+                  }`}
+                >
+                  <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/30 hover:shadow-md transition-all duration-300">
+                    {/* Header */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`w-1 h-8 rounded-full bg-gradient-to-b ${category.color}`} />
+                      <h3 className="font-bold text-lg text-foreground">
+                        {category.title}
+                      </h3>
+                    </div>
 
-                  <div className="divide-y divide-border">
-                    {category.skills.map((skill, sIdx) => (
-                      <SkillItem
-                        key={skill.name}
-                        name={skill.name}
-                        level={skill.level}
-                        isVisible={isVisible}
-                        delay={idx * 100 + sIdx * 60}
-                      />
-                    ))}
+                    {/* Skills */}
+                    <div className="space-y-3">
+                      {category.skills.map((skill, sIdx) => {
+                        const label = getLevelLabel(skill.level);
+                        return (
+                          <div
+                            key={skill.name}
+                            className="flex items-center justify-between"
+                            style={{
+                              opacity: isVisible ? 1 : 0,
+                              transform: isVisible ? "translateX(0)" : `translateX(${isLeft ? "-12px" : "12px"})`,
+                              transition: "opacity 0.5s ease, transform 0.5s ease",
+                              transitionDelay: `${idx * 150 + sIdx * 80 + 500}ms`,
+                            }}
+                          >
+                            <span className="text-sm font-medium text-foreground">
+                              {skill.name}
+                            </span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs text-muted-foreground">
+                                {label}
+                              </span>
+                              <div
+                                className="h-1.5 rounded-full bg-muted w-16 overflow-hidden"
+                              >
+                                <div
+                                  className={`h-full rounded-full bg-gradient-to-r ${category.color} transition-all duration-700`}
+                                  style={{
+                                    width: isVisible ? `${skill.level}%` : "0%",
+                                    transitionDelay: `${idx * 150 + sIdx * 80 + 600}ms`,
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
