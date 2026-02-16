@@ -12,9 +12,9 @@ const projects = [
     slug: "barriere-rfid",
   },
   {
-    title: "Voiture Télécommandée",
-    description: "Développement d'une voiture autonome contrôlable via application mobile avec communication Bluetooth.",
-    tags: ["Flutter", "Arduino", "Bluetooth", "Mobile"],
+    title: "Voiture Autonome",
+    description: "Développement d'une voiture autonome dotée d'un capteur ultrason pour la détection d'obstacles et navigation intelligente.",
+    tags: ["Arduino", "Capteur Ultrason", "Servomoteur", "Module Driver"],
     icon: Car,
     color: "from-secondary to-purple-400",
     year: "2024",

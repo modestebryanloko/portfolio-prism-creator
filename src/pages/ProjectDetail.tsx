@@ -48,14 +48,14 @@ Lorsqu'un badge valide est détecté, la barrière s'ouvre automatiquement et se
     ]
   },
   "voiture-telecommandee": {
-    title: "Voiture Télécommandée",
-    description: "Développement d'une voiture autonome contrôlable via application mobile avec communication Bluetooth.",
-    longDescription: `Projet de robotique mobile consistant en la conception d'une voiture télécommandée contrôlable via une application mobile développée avec Flutter.
+    title: "Voiture Autonome",
+    description: "Développement d'une voiture autonome dotée d'un capteur ultrason pour la détection d'obstacles et navigation intelligente.",
+    longDescription: `Projet de robotique mobile consistant en la conception d'une voiture autonome capable de détecter et d'éviter les obstacles de manière intelligente.
 
-La communication entre le smartphone et la voiture se fait via Bluetooth, permettant un contrôle en temps réel des mouvements (avant, arrière, gauche, droite) ainsi que de la vitesse.
+Le système utilise un capteur ultrason monté sur un servomoteur pour scanner l'environnement et détecter les obstacles dans différentes directions. Le module driver permet de contrôler les moteurs DC pour la navigation.
 
-L'application mobile offre une interface intuitive avec des commandes tactiles et un joystick virtuel pour une expérience de conduite optimale.`,
-    tags: ["Flutter", "Arduino", "Bluetooth", "Mobile"],
+La voiture prend des décisions de navigation en temps réel : lorsqu'un obstacle est détecté, le servomoteur oriente le capteur pour évaluer les alternatives et choisir le meilleur chemin à suivre.`,
+    tags: ["Arduino", "Capteur Ultrason", "Servomoteur", "Module Driver"],
     icon: Car,
     color: "from-secondary to-purple-400",
     year: "2024",
@@ -63,17 +63,17 @@ L'application mobile offre une interface intuitive avec des commandes tactiles e
     videoUrls: ["/videos/voiture-telecommandee-demo.mp4"],
     imageUrls: [],
     features: [
-      "Contrôle directionnel complet (4 directions)",
-      "Réglage de la vitesse en temps réel",
-      "Joystick virtuel sur l'application",
-      "Connexion Bluetooth stable",
-      "Interface utilisateur moderne et intuitive"
+      "Détection d'obstacles par capteur ultrason",
+      "Balayage directionnel via servomoteur",
+      "Navigation autonome et évitement d'obstacles",
+      "Contrôle des moteurs DC via module driver",
+      "Prise de décision en temps réel"
     ],
     technologies: [
-      { name: "Flutter", description: "Développement de l'application mobile" },
-      { name: "Arduino Nano", description: "Contrôleur embarqué" },
-      { name: "Module HC-05", description: "Communication Bluetooth" },
-      { name: "Pont H L298N", description: "Contrôle des moteurs DC" }
+      { name: "Arduino", description: "Microcontrôleur principal" },
+      { name: "Capteur Ultrason HC-SR04", description: "Détection de distance et d'obstacles" },
+      { name: "Servomoteur SG90", description: "Orientation du capteur pour le balayage" },
+      { name: "Module Driver L298N", description: "Contrôle des moteurs DC" }
     ]
   },
   "voiture-ia": {
