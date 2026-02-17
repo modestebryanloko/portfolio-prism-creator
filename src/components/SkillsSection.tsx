@@ -8,10 +8,10 @@ const skillCategories = [
     color: "from-emerald-500 to-teal-400",
     dotColor: "bg-emerald-500",
     skills: [
-      { name: "Arduino", level: 85 },
-      { name: "Raspberry Pi", level: 75 },
-      { name: "RFID/NFC", level: 80 },
-      { name: "Capteurs IoT", level: 75 },
+      { name: "Arduino", level: 75 },
+      { name: "Raspberry Pi", level: 70 },
+      { name: "RFID/NFC", level: 72 },
+      { name: "Capteurs IoT", level: 68 },
     ],
   },
   {
@@ -20,10 +20,10 @@ const skillCategories = [
     color: "from-yellow-500 to-orange-400",
     dotColor: "bg-yellow-500",
     skills: [
-      { name: "n8n", level: 80 },
-      { name: "API Integration", level: 75 },
-      { name: "Workflows", level: 85 },
-      { name: "No-Code Tools", level: 70 },
+      { name: "n8n", level: 75 },
+      { name: "API Integration", level: 70 },
+      { name: "Workflows", level: 78 },
+      { name: "No-Code Tools", level: 65 },
     ],
   },
   {
@@ -44,9 +44,9 @@ const skillCategories = [
     dotColor: "bg-indigo-500",
     skills: [
       { name: "Réseaux Électriques", level: 30 },
-      { name: "Asservissement", level: 75 },
+      { name: "Asservissement", level: 70 },
       { name: "Maintenance Climatiseur", level: 20 },
-      { name: "Schémas Électriques", level: 85 },
+      { name: "Schémas Électriques", level: 78 },
     ],
   },
   {
