@@ -8,10 +8,10 @@ const skillCategories = [
     color: "from-emerald-500 to-teal-400",
     dotColor: "bg-emerald-500",
     skills: [
-      { name: "Arduino", level: 85 },
-      { name: "Raspberry Pi", level: 75 },
-      { name: "RFID/NFC", level: 80 },
-      { name: "Capteurs IoT", level: 75 },
+      { name: "Arduino", level: 95 },
+      { name: "Raspberry Pi", level: 90 },
+      { name: "RFID/NFC", level: 92 },
+      { name: "Capteurs IoT", level: 90 },
     ],
   },
   {
@@ -20,10 +20,10 @@ const skillCategories = [
     color: "from-yellow-500 to-orange-400",
     dotColor: "bg-yellow-500",
     skills: [
-      { name: "n8n", level: 80 },
-      { name: "API Integration", level: 75 },
-      { name: "Workflows", level: 85 },
-      { name: "No-Code Tools", level: 70 },
+      { name: "n8n", level: 95 },
+      { name: "API Integration", level: 90 },
+      { name: "Workflows", level: 95 },
+      { name: "No-Code Tools", level: 90 },
     ],
   },
   {
@@ -32,9 +32,9 @@ const skillCategories = [
     color: "from-secondary to-purple-400",
     dotColor: "bg-secondary",
     skills: [
-      { name: "Python", level: 50 },
-      { name: "C++", level: 70 },
-      { name: "SQL", level: 65 },
+      { name: "Python", level: 90 },
+      { name: "C++", level: 92 },
+      { name: "SQL", level: 88 },
     ],
   },
   {
@@ -43,10 +43,10 @@ const skillCategories = [
     color: "from-indigo-500 to-blue-400",
     dotColor: "bg-indigo-500",
     skills: [
-      { name: "Réseaux Électriques", level: 30 },
-      { name: "Asservissement", level: 75 },
-      { name: "Maintenance Climatiseur", level: 20 },
-      { name: "Schémas Électriques", level: 85 },
+      { name: "Réseaux Électriques", level: 90 },
+      { name: "Asservissement", level: 92 },
+      { name: "Maintenance Climatiseur", level: 88 },
+      { name: "Schémas Électriques", level: 95 },
     ],
   },
   {
@@ -55,9 +55,9 @@ const skillCategories = [
     color: "from-primary to-cyan-400",
     dotColor: "bg-primary",
     skills: [
-      { name: "React.js", level: 30 },
-      { name: "JavaScript", level: 50 },
-      { name: "Node.js", level: 20 },
+      { name: "React.js", level: 90 },
+      { name: "JavaScript", level: 92 },
+      { name: "Node.js", level: 88 },
     ],
   },
   {
@@ -66,9 +66,9 @@ const skillCategories = [
     color: "from-rose-500 to-pink-400",
     dotColor: "bg-rose-500",
     skills: [
-      { name: "Machine Learning", level: 25 },
-      { name: "Computer Vision", level: 10 },
-      { name: "Cybersécurité", level: 10 },
+      { name: "Machine Learning", level: 90 },
+      { name: "Computer Vision", level: 88 },
+      { name: "Cybersécurité", level: 90 },
     ],
   },
 ];
