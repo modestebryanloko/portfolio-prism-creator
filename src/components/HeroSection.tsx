@@ -44,8 +44,8 @@ const HeroSection = () => {
                 size="lg" 
                 className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 glow-effect"
               >
-                <a href="/CV_Modeste_Loko.pdf" download>
-                  Télécharger mon CV
+                <a href="/demande-acces">
+                  Accéder à mes documents
                 </a>
               </Button>
               <Button 
