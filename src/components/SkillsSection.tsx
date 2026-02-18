@@ -3,73 +3,46 @@ import { Code, Cpu, Database, Globe, Wrench, Brain } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Systèmes Embarqués",
+    title: "IoT",
     icon: Cpu,
     color: "from-emerald-500 to-teal-400",
     dotColor: "bg-emerald-500",
-    skills: [
-      { name: "Arduino", level: 75 },
-      { name: "Raspberry Pi", level: 70 },
-      { name: "RFID/NFC", level: 72 },
-      { name: "Capteurs IoT", level: 68 },
-    ],
+    level: 70,
   },
   {
-    title: "Automatisation",
+    title: "Automatisation n8n",
     icon: Wrench,
     color: "from-yellow-500 to-orange-400",
     dotColor: "bg-yellow-500",
-    skills: [
-      { name: "n8n", level: 75 },
-      { name: "API Integration", level: 70 },
-      { name: "Workflows", level: 78 },
-      { name: "No-Code Tools", level: 65 },
-    ],
+    level: 40,
   },
   {
-    title: "Programmation",
-    icon: Code,
-    color: "from-secondary to-purple-400",
-    dotColor: "bg-secondary",
-    skills: [
-      { name: "Python", level: 50 },
-      { name: "C++", level: 70 },
-      { name: "SQL", level: 65 },
-    ],
+    title: "AI & Data",
+    icon: Brain,
+    color: "from-rose-500 to-pink-400",
+    dotColor: "bg-rose-500",
+    level: 15,
   },
   {
-    title: "Électrotechnique",
+    title: "Cybersécurité",
     icon: Database,
     color: "from-indigo-500 to-blue-400",
     dotColor: "bg-indigo-500",
-    skills: [
-      { name: "Réseaux Électriques", level: 30 },
-      { name: "Asservissement", level: 70 },
-      { name: "Maintenance Climatiseur", level: 20 },
-      { name: "Schémas Électriques", level: 78 },
-    ],
+    level: 5,
   },
   {
     title: "Développement Web",
     icon: Globe,
     color: "from-primary to-cyan-400",
     dotColor: "bg-primary",
-    skills: [
-      { name: "React.js", level: 30 },
-      { name: "JavaScript", level: 50 },
-      { name: "Node.js", level: 20 },
-    ],
+    level: 50,
   },
   {
-    title: "IA & Data",
-    icon: Brain,
-    color: "from-rose-500 to-pink-400",
-    dotColor: "bg-rose-500",
-    skills: [
-      { name: "Machine Learning", level: 25 },
-      { name: "Computer Vision", level: 10 },
-      { name: "Cybersécurité", level: 10 },
-    ],
+    title: "Électrotechnique",
+    icon: Code,
+    color: "from-secondary to-purple-400",
+    dotColor: "bg-secondary",
+    level: 80,
   },
 ];
 
@@ -174,43 +147,33 @@ const SkillsSection = () => {
                       </h3>
                     </div>
 
-                    {/* Skills */}
-                    <div className="space-y-3">
-                      {category.skills.map((skill, sIdx) => {
-                        const label = getLevelLabel(skill.level);
-                        return (
+                    {/* Level */}
+                    <div
+                      className="flex items-center justify-between"
+                      style={{
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? "translateX(0)" : `translateX(${isLeft ? "-12px" : "12px"})`,
+                        transition: "opacity 0.5s ease, transform 0.5s ease",
+                        transitionDelay: `${idx * 150 + 500}ms`,
+                      }}
+                    >
+                      <span className="text-sm font-medium text-foreground">
+                        {getLevelLabel(category.level)}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-muted-foreground">
+                          {category.level}%
+                        </span>
+                        <div className="h-1.5 rounded-full bg-muted w-24 overflow-hidden">
                           <div
-                            key={skill.name}
-                            className="flex items-center justify-between"
+                            className={`h-full rounded-full bg-gradient-to-r ${category.color} transition-all duration-700`}
                             style={{
-                              opacity: isVisible ? 1 : 0,
-                              transform: isVisible ? "translateX(0)" : `translateX(${isLeft ? "-12px" : "12px"})`,
-                              transition: "opacity 0.5s ease, transform 0.5s ease",
-                              transitionDelay: `${idx * 150 + sIdx * 80 + 500}ms`,
+                              width: isVisible ? `${category.level}%` : "0%",
+                              transitionDelay: `${idx * 150 + 600}ms`,
                             }}
-                          >
-                            <span className="text-sm font-medium text-foreground">
-                              {skill.name}
-                            </span>
-                            <div className="flex items-center gap-2">
-                              <span className="text-xs text-muted-foreground">
-                                {label}
-                              </span>
-                              <div
-                                className="h-1.5 rounded-full bg-muted w-16 overflow-hidden"
-                              >
-                                <div
-                                  className={`h-full rounded-full bg-gradient-to-r ${category.color} transition-all duration-700`}
-                                  style={{
-                                    width: isVisible ? `${skill.level}%` : "0%",
-                                    transitionDelay: `${idx * 150 + sIdx * 80 + 600}ms`,
-                                  }}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
