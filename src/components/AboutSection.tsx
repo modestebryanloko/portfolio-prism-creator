@@ -45,7 +45,7 @@ const AboutSection = () => {
           {/* Bio Text */}
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Je suis <span className="text-foreground font-semibold">Modeste Bryan Loko</span>, 
+              Je suis <span className="text-foreground font-semibold">Modeste Loko</span>, 
               étudiant passionné en Génie Électrique et Informatique à l'INSTI de Lokossa. 
               Mon parcours a débuté avec un Baccalauréat F3 en Électrotechnique à l'École 
               Saint Jean Bosco de Cotonou.

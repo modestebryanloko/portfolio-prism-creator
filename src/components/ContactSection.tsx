@@ -1,35 +1,12 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2 } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
-const contactInfo = [
-  {
-    icon: Phone,
-    label: "Téléphone",
-    value: "01 46 52 49 76",
-    href: "tel:0146524976",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "modestebryanloko@gmail.com",
-    href: "mailto:modestebryanloko@gmail.com",
-  },
-  {
-    icon: MapPin,
-    label: "Localisation",
-    value: "Pahou, Bénin",
-    href: null,
-  },
-];
 
-const socialLinks = [
-  { icon: Github, href: "https://github.com/modesteloko", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/modesteloko", label: "LinkedIn" },
-];
+
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
@@ -77,12 +77,6 @@ const HeroSection = () => {
                 className="p-3 rounded-full bg-muted/50 hover:bg-muted hover:text-primary transition-all duration-300"
               >
                 <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:modestebryanloko@gmail.com"
-                className="p-3 rounded-full bg-muted/50 hover:bg-muted hover:text-primary transition-all duration-300"
-              >
-                <Mail className="w-5 h-5" />
               </a>
             </div>
           </div>
