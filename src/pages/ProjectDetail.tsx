@@ -191,9 +191,9 @@ const ImageCarousel = ({ images, title, color }: { images: string[]; title: stri
     <div className="relative group">
       <div ref={scrollRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
         {images.map((url, idx) => (
-          <div key={idx} className={`relative flex-shrink-0 w-[85%] sm:w-[70%] snap-center rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${color} p-0.5`}>
+          <div key={idx} className={`relative flex-shrink-0 w-full snap-center rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${color} p-0.5`}>
             <div className="bg-card rounded-xl overflow-hidden">
-              <img src={url} alt={`${title} - photo ${idx + 1}`} className="w-full object-cover" />
+              <img src={url} alt={`${title} - photo ${idx + 1}`} className="w-full h-full object-contain" />
             </div>
           </div>
         ))}
