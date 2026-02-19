@@ -125,8 +125,8 @@ Cette approche no-code/low-code permet de gagner un temps précieux et de rédui
       "/images/workflow-work1.png",
       "/images/workflow-wok2.png",
       "/images/workflow-w2.png",
-      "/images/workflow-wok3.png",
-      "/images/workflow-workf.png",
+      "/images/workflow-auto1.png",
+      "/images/workflow-auto2.png",
     ],
     features: [
       "Intégration multi-services (Slack, Gmail, etc.)",
