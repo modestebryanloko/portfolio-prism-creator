@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Github, Calendar, Code, Car, Bot, Workflow, Shield, Play, Zap } from "lucide-react";
+import { ArrowLeft, Github, Calendar, Code, Car, Bot, Workflow, Shield, Play, Zap, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
 interface ProjectData {
@@ -119,7 +120,14 @@ Cette approche no-code/low-code permet de gagner un temps précieux et de rédui
     year: "2025",
     githubLink: "https://github.com/modeste-loko",
     videoUrls: [],
-    imageUrls: [],
+    imageUrls: [
+      "/images/workflow-main.png",
+      "/images/workflow-work1.png",
+      "/images/workflow-wok2.png",
+      "/images/workflow-w2.png",
+      "/images/workflow-wok3.png",
+      "/images/workflow-workf.png",
+    ],
     features: [
       "Intégration multi-services (Slack, Gmail, etc.)",
       "Synchronisation automatique de données",
@@ -147,7 +155,7 @@ Chaque réalisation est testée et validée pour assurer la qualité et la fiabi
     color: "from-yellow-500 to-orange-400",
     year: "2023 - 2026",
     githubLink: "https://github.com/modeste-loko",
-    videoUrls: ["/videos/realisation-simple-demo1.mp4", "/videos/realisation-simple-demo2.mp4"],
+    videoUrls: ["/videos/realisation-simple-demo1.mp4", "/videos/realisation-simple-demo2.mp4", "/videos/variateur-vitesse.mp4"],
     imageUrls: ["/images/realisation-simple-schema.jpeg", "/images/realisation-simple-code.jpeg"],
     features: [
       "Conception de schémas électroniques",
@@ -163,6 +171,56 @@ Chaque réalisation est testée et validée pour assurer la qualité et la fiabi
       { name: "Composants électroniques", description: "Résistances, condensateurs, capteurs" }
     ]
   }
+};
+
+const ImageCarousel = ({ images, title, color }: { images: string[]; title: string; color: string }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const cardWidth = container.firstElementChild?.clientWidth || 300;
+    const gap = 16;
+    const newIdx = dir === "left" ? Math.max(0, activeIdx - 1) : Math.min(images.length - 1, activeIdx + 1);
+    setActiveIdx(newIdx);
+    container.scrollTo({ left: newIdx * (cardWidth + gap), behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative group">
+      <div ref={scrollRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+        {images.map((url, idx) => (
+          <div key={idx} className={`relative flex-shrink-0 w-[85%] sm:w-[70%] snap-center rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${color} p-0.5`}>
+            <div className="bg-card rounded-xl overflow-hidden">
+              <img src={url} alt={`${title} - photo ${idx + 1}`} className="w-full object-cover" />
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Navigation arrows */}
+      <button
+        onClick={() => scroll("left")}
+        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0"
+        disabled={activeIdx === 0}
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={() => scroll("right")}
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0"
+        disabled={activeIdx === images.length - 1}
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-4">
+        {images.map((_, idx) => (
+          <button key={idx} onClick={() => { setActiveIdx(idx); scrollRef.current?.scrollTo({ left: idx * ((scrollRef.current.firstElementChild?.clientWidth || 300) + 16), behavior: "smooth" }); }} className={`w-2 h-2 rounded-full transition-all ${idx === activeIdx ? "bg-primary w-6" : "bg-muted-foreground/30"}`} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 const ProjectDetail = () => {
@@ -273,22 +331,26 @@ const ProjectDetail = () => {
               </section>
             )}
 
-            {/* Images */}
+            {/* Images - Scrolling Gallery */}
             {project.imageUrls.length > 0 && (
               <section className="mb-16">
                 <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
                   <Code className="w-6 h-6 text-primary" />
                   Photos du projet
                 </h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {project.imageUrls.map((url, idx) => (
-                    <div key={idx} className={`relative rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${project.color} p-0.5`}>
-                      <div className="bg-card rounded-xl overflow-hidden">
-                        <img src={url} alt={`${project.title} - photo ${idx + 1}`} className="w-full object-cover" />
+                {project.imageUrls.length > 2 ? (
+                  <ImageCarousel images={project.imageUrls} title={project.title} color={project.color} />
+                ) : (
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {project.imageUrls.map((url, idx) => (
+                      <div key={idx} className={`relative rounded-2xl overflow-hidden border border-border bg-gradient-to-br ${project.color} p-0.5`}>
+                        <div className="bg-card rounded-xl overflow-hidden">
+                          <img src={url} alt={`${project.title} - photo ${idx + 1}`} className="w-full object-cover" />
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </section>
             )}
           </>
