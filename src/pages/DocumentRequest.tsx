@@ -61,6 +61,17 @@ const DocumentRequest = () => {
       });
 
       if (error) throw error;
+
+      // Send email notification to owner
+      await fetch(CHAT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({ action: "notify", requestData: data }),
+      });
+
       setRequestSubmitted(true);
       toast.success("Demande envoyée avec succès !");
     } catch (err) {
