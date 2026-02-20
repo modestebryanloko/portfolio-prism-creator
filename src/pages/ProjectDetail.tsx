@@ -33,7 +33,7 @@ Lorsqu'un badge valide est détecté, la barrière s'ouvre automatiquement et se
     year: "2024",
     githubLink: "https://github.com/modeste-loko",
     videoUrls: [],
-    imageUrls: [],
+    imageUrls: ["/images/barriere-rfid-circuit.png"],
     features: [
       "Lecture de badges RFID avec module RC522",
       "Contrôle de servo-moteur pour la barrière",
@@ -62,7 +62,7 @@ La voiture prend des décisions de navigation en temps réel : lorsqu'un obstacl
     year: "2024",
     githubLink: "https://github.com/modeste-loko",
     videoUrls: ["/videos/voiture-telecommandee-demo.mp4"],
-    imageUrls: [],
+    imageUrls: ["/images/voiture-circuit.png"],
     features: [
       "Détection d'obstacles par capteur ultrason",
       "Balayage directionnel via servomoteur",
